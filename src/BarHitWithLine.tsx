@@ -8,7 +8,7 @@ const BarHitWithLine = (props : DimenProps) => {
     return (
         <React.Fragment>
             <div style = {parentStyle()}>
-                <div style = {barStyle()} onClick = {onClick()}></div>
+                <div style = {barStyle()} onClick = {() => onClick()}></div>
                 <div style = {lineStyle()}></div>
             </div>
         </React.Fragment>

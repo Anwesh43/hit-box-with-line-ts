@@ -1,6 +1,6 @@
 import {useState, useEffect, CSSProperties} from 'react'
 
-const scGap : number = 0.02 
+const scGap : number = 0.01
 const delay : number = 20 
 
 export const useAnimatedScale = () => {
@@ -20,14 +20,14 @@ export const useAnimatedScale = () => {
                         }
                         return prev + scGap 
                     })
-                })
+                }, delay)
             }
         }
     }
 }
 
 export const useDimension = () => {
-    const [w, setW] = useState(window.innerHeight)
+    const [w, setW] = useState(window.innerWidth)
     const [h, setH] = useState(window.innerHeight)
     useEffect(() => {
         window.onresize = () => {
@@ -67,7 +67,7 @@ export const useStyle = (w : number, h : number, scale : number) => {
         },
         lineStyle() : CSSProperties {
             const sf1 : number = divideScale(sf, 0, 2)
-            const left = `${w /2 + w * 0.5 * sf1}px`
+            const left = `${w * 0.5 * (1 - sf1)}px`
             const width = `${size}px`
             const height = `${Math.min(w, h) / 90}px`
             return {
